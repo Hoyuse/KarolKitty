@@ -24,27 +24,58 @@ interface WelcomeVideoProps {
 
 export default function WelcomeVideo({ onShowNotification }: WelcomeVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  
-  // A single, extremely stable and light public test video on high-speed CDN.
-  // This is officially cached, fully optimized and bypasses CORS and browser constraints.
-  const videoUrl = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4';
+  const videoUrl = '/videos/karol-kitty-bienvenida.mp4';
+  const staticQrUrl = '/qr/karol-kitty-video-bienvenida.png';
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [appUrl, setAppUrl] = useState('https://karolkitty.com');
+  const [appUrl, setAppUrl] = useState('https://karolkitty.com/?video=play');
+  const [qrImageSrc, setQrImageSrc] = useState(staticQrUrl);
   const [captionText, setCaptionText] = useState('¡Hola, Kitty Amiga! Te damos la bienvenida a Karol Kitty... 💖');
 
-  // Deep link generation
+  // Deep link + QR (local en producción, dinámico en desarrollo)
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const currentOrigin = window.location.origin + window.location.pathname;
-      const deepLink = `${currentOrigin}?video=play`;
-      setAppUrl(deepLink);
+    if (typeof window === 'undefined') return;
+
+    const currentOrigin = window.location.origin + window.location.pathname;
+    const deepLink = `${currentOrigin}?video=play`;
+    setAppUrl(deepLink);
+
+    const isLocalHost =
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1';
+
+    if (isLocalHost) {
+      setQrImageSrc(
+        `https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=78555e&bgcolor=ffffff&qzone=1&data=${encodeURIComponent(deepLink)}`
+      );
+    } else {
+      setQrImageSrc(staticQrUrl);
     }
   }, []);
+
+  // Autoplay al escanear el QR (?video=play)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('video') !== 'play') return;
+
+    const timer = window.setTimeout(() => {
+      if (!videoRef.current) return;
+      videoRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {
+          onShowNotification('Toca play para iniciar el video de bienvenida 💖');
+        });
+    }, 1400);
+
+    return () => window.clearTimeout(timer);
+  }, [onShowNotification]);
 
   // Update dynamic captions as the video plays to say a cute greeting
   useEffect(() => {
@@ -288,8 +319,8 @@ export default function WelcomeVideo({ onShowNotification }: WelcomeVideoProps) 
               <div id="qr-code-canvas-container" className="bg-white p-4 rounded-xl shadow-xs border-2 border-[#FFCCD4] relative group">
                 <img
                   id="dynamic-qr-image"
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=78555e&bgcolor=ffffff&qzone=1&data=${encodeURIComponent(appUrl)}`}
-                  alt="Código QR de Karol Kitty"
+                  src={qrImageSrc}
+                  alt="Código QR de Karol Kitty — abre el video de bienvenida"
                   className="w-40 h-40 object-contain mx-auto select-none rounded-md"
                   referrerPolicy="no-referrer"
                 />
@@ -311,10 +342,14 @@ export default function WelcomeVideo({ onShowNotification }: WelcomeVideoProps) 
                 </div>
               </div>
 
-              <div className="flex items-center justify-center gap-1.5 bg-brand-primary-container text-brand-on-primary-container text-xs px-4 py-2.5 rounded-full font-bold w-full">
+              <a
+                href={staticQrUrl}
+                download="karol-kitty-qr-bienvenida.png"
+                className="flex items-center justify-center gap-1.5 bg-brand-primary-container text-brand-on-primary-container text-xs px-4 py-2.5 rounded-full font-bold w-full hover:opacity-90 transition-opacity"
+              >
                 <Smartphone className="w-4 h-4 animate-bounce text-brand-primary" />
-                <span className="uppercase text-[10px] tracking-wide">¡Perfecto para compartir en Redes!</span>
-              </div>
+                <span className="uppercase text-[10px] tracking-wide">Descargar QR para imprimir</span>
+              </a>
 
             </div>
 
