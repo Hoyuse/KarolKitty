@@ -98,15 +98,15 @@ export default function ContactModal({ isOpen, onClose, onShowNotification }: Co
             <div className="grid grid-cols-3 gap-2.5 bg-brand-background border-brand-primary-container/20 border p-3 rounded-2xl text-[10px] sm:text-xs">
               <div className="flex flex-col items-center justify-center text-center">
                 <Phone className="w-4 h-4 text-brand-primary mb-1 shrink-0" />
-                <span className="font-bold">+34 900 123 456</span>
+                <a href="https://wa.me/573226420298" target="_blank" rel="noreferrer noopener" className="font-bold">WhatsApp: +57 322 642 0298</a>
               </div>
               <div className="flex flex-col items-center justify-center text-center">
                 <Mail className="w-4 h-4 text-brand-primary mb-1 shrink-0" />
-                <span className="font-bold">hola@karolkitty.com</span>
+                <a href="mailto:hola@karolkitty.com" className="font-bold">hola@karolkitty.com</a>
               </div>
               <div className="flex flex-col items-center justify-center text-center">
                 <MapPin className="w-4 h-4 text-brand-primary mb-1 shrink-0" />
-                <span className="font-bold">Madrid, España</span>
+                <span className="font-bold">Cartagena, Colombia</span>
               </div>
             </div>
 
