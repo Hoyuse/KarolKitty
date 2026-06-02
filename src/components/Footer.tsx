@@ -80,6 +80,13 @@ export default function Footer({ onShowNotification }: FooterProps) {
         <p className="font-body text-xs sm:text-sm text-brand-on-surface-variant text-center md:text-left font-medium">
           © 2026 Karol Kitty - El rincón más cute del mundo.
         </p>
+        <p className="font-body text-[10px] sm:text-xs text-brand-on-surface-variant text-center md:text-left leading-snug max-w-sm">
+          <a href="https://karol-kitty-smpz.vercel.app/" className="font-semibold text-brand-primary hover:underline" target="_blank" rel="noreferrer noopener">Karol Kitty</a> por <a href="https://github.com/Hoyuse" className="font-semibold text-brand-primary hover:underline" target="_blank" rel="noreferrer noopener">Karol Vivanco</a> está marcado <a href="https://creativecommons.org/publicdomain/zero/1.0/" className="font-semibold text-brand-primary hover:underline" target="_blank" rel="noreferrer noopener">CC0 1.0</a>
+          <span className="inline-flex items-center gap-1 ml-1">
+            <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="Creative Commons" style={{ maxWidth: '1em', maxHeight: '1em', marginLeft: '.2em' }} />
+            <img src="https://mirrors.creativecommons.org/presskit/icons/zero.svg" alt="Public Domain" style={{ maxWidth: '1em', maxHeight: '1em', marginLeft: '.2em' }} />
+          </span>
+        </p>
       </div>
 
       {/* Navigation Footer links with modals */}
