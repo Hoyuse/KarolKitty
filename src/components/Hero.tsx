@@ -6,6 +6,8 @@
 import React from 'react';
 import { ArrowRight, Sparkles, Heart } from 'lucide-react';
 
+const heroImage = new URL('../assets/images/hello_kitty_store_banner_1780438913928.png', import.meta.url).href;
+
 interface HeroProps {
   onExploreClick: () => void;
 }
@@ -61,7 +63,7 @@ export default function Hero({ onExploreClick }: HeroProps) {
           <img
             alt="Peluches de Hello Kitty en exhibición"
             className="w-full max-h-[460px] h-auto rounded-3xl kawaii-shadow object-cover transform rotate-1 group-hover:rotate-0 transition-all duration-700 pointer-events-auto border-4 border-white cursor-pointer relative z-10"
-            src="/src/assets/images/hello_kitty_store_banner_1780438913928.png"
+            src={heroImage}
             referrerPolicy="no-referrer"
           />
           

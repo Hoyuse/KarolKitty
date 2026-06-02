@@ -5,13 +5,15 @@
 
 import { Product } from './types';
 
+const getAsset = (filename: string) => new URL(`./assets/images/${filename}`, import.meta.url).href;
+
 export const INITIAL_PRODUCTS: Product[] = [
   {
     id: '1',
     name: 'Peluche Hello Kitty Clásico',
     price: 95000,
     category: 'Peluches',
-    image: '/src/assets/images/hello_kitty_plush_1780438932979.png',
+    image: getAsset('hello_kitty_plush_1780438932979.png'),
     description: 'Increíblemente suave y tierno peluche clásico con su icónico overol azul y moño rojo brillante. El compañero perfecto para abrazos infinitos.',
     details: [
       'Material exterior de felpa ultra suave premium',
@@ -26,7 +28,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'Taza de cerámica Karol Kitty',
     price: 55000,
     category: 'Hogar',
-    image: '/src/assets/images/karol_kitty_mug_1780438946947.png',
+    image: getAsset('karol_kitty_mug_1780438946947.png'),
     description: 'Comienza tus mañanas mágicamente con esta hermosa taza de cerámica artesanal con forma de gatito, detalles en oro y un divino moño 3D en la asa.',
     details: [
       'Cerámica de alta calidad con acabado esmaltado brillante',
@@ -41,7 +43,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'Mochila rosa Premium',
     price: 180000,
     category: 'Bolsos',
-    image: '/src/assets/images/pink_premium_backpack_1780438960946.png',
+    image: getAsset('pink_premium_backpack_1780438960946.png'),
     description: 'Elegante y adorable mochila de diseñador en tonos pastel con bordados finos y tiradores acolchados en forma de nubecitas. Espaciosa y super cute.',
     details: [
       'Piel sintética PU de alta gama con costuras reforzadas',
@@ -56,7 +58,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'Set de stickers Sanrio',
     price: 35000,
     category: 'Papelería',
-    image: '/src/assets/images/sanrio_stickers_set_1780439419507.png',
+    image: getAsset('sanrio_stickers_set_1780439419507.png'),
     description: 'Llena tus libretas y accesorios de magia con este set de stickers holográficos troquelados de alta calidad con destellos de corazones y estrellas.',
     details: [
       'Acabado holográfico brillante resistente a salpicaduras',
@@ -71,7 +73,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'Peluche Cinnamoroll Cloud Fluff',
     price: 110000,
     category: 'Peluches',
-    image: '/src/assets/images/cinnamoroll_plush_1780438975414.png',
+    image: getAsset('cinnamoroll_plush_1780438975414.png'),
     description: 'Tan esponjoso como una nube real, este peluche de Cinnamoroll viene con sus características orejas extra largas y mejillas sonrosadas bordadas.',
     details: [
       'Formulado con micro-felpa súper esponjosa japonesa',
@@ -101,7 +103,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'Lámpara de Noche Sleepy Cat',
     price: 85000,
     category: 'Hogar',
-    image: '/src/assets/images/sleepy_cat_lamp_1780438989322.png',
+    image: getAsset('sleepy_cat_lamp_1780438989322.png'),
     description: 'Una luz suave y acogedora de silicona blanda que se ilumina con suaves toquecitos. Ideal para ambientar de ternura tu mesa de noche o escritorio.',
     details: [
       'Fabricada en silicona lavable libre de BPA y súper suave al tacto',
@@ -116,7 +118,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'Bolso Térmico Bento Box',
     price: 125000,
     category: 'Bolsos',
-    image: '/src/assets/images/bento_lunch_bag_1780439050439.png',
+    image: getAsset('bento_lunch_bag_1780439050439.png'),
     description: 'Llega tus almuerzos y snacks favoritos con estilo gracias a este bolso térmico impermeable, con divertidos bordados y asa acolchada.',
     details: [
       'Revestimiento térmico interno de aluminio aislante de alta calidad',
@@ -161,7 +163,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'Peluche My Melody Sweet Strawberry',
     price: 115000,
     category: 'Peluches',
-    image: '/src/assets/images/my_melody_plush_1780439037031.png',
+    image: getAsset('my_melody_plush_1780439037031.png'),
     description: 'My Melody vestida con su gorrito de fresitas frescas para darte los abrazos más dulces del planeta. Espectacular diseño exclusivo de edición primavera.',
     details: [
       'Pelusa satinada hipoalergénica de caricia celestial',
@@ -206,7 +208,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'Monedero de Felpa Pompompurin',
     price: 48000,
     category: 'Bolsos',
-    image: '/src/assets/images/pompompurin_coin_purse_1780439070685.png',
+    image: getAsset('pompompurin_coin_purse_1780439070685.png'),
     description: 'Guarda tus monedas, billetes y audífonos de forma segura en este adorable monedero súper acolchado de Pompompurin con asa de llavero integrada.',
     details: [
       'Felpa extra esponjosa de alta resistencia con detalles en relieve',
