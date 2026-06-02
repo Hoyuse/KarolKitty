@@ -1,0 +1,6 @@
+{
+  "name": "Karol Kitty",
+  "description": "El rincón más cute del mundo. Tienda online de peluches, bolsos, papelería y hogar con estética kawaii.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
